@@ -7,7 +7,9 @@
     "lint": "nx run-many --target=lint",
     "test": "nx run-many --target=test",
     "build:bff": "vivaldi build bff",
-    "dev:bff": "vivaldi dev bff"
+    "build:my-spartacus-app": "nx build my-spartacus-app",
+    "dev:bff": "vivaldi dev bff",
+    "dev:my-spartacus-app": "nx serve my-spartacus-app"
   },
   "private": true,
   "dependencies": {
