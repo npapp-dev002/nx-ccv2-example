@@ -12,28 +12,49 @@
       "options": {
         "outputPath": "dist/apps/my-spartacus-app",
         "browser": "apps/my-spartacus-app/src/main.ts",
+        "polyfills": ["zone.js"],
         "tsConfig": "apps/my-spartacus-app/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
           {
             "glob": "**/*",
             "input": "apps/my-spartacus-app/public"
+          },
+          {
+            "glob": "**/*",
+            "input": "./node_modules/@spartacus/smartedit/assets",
+            "output": "assets/"
           }
         ],
-        "styles": ["apps/my-spartacus-app/src/styles.scss"]
+        "styles": [
+          "apps/my-spartacus-app/src/styles.scss",
+          "apps/my-spartacus-app/src/styles/spartacus/user.scss",
+          "apps/my-spartacus-app/src/styles/spartacus/cart.scss",
+          "apps/my-spartacus-app/src/styles/spartacus/order.scss",
+          "apps/my-spartacus-app/src/styles/spartacus/checkout.scss",
+          "apps/my-spartacus-app/src/styles/spartacus/storefinder.scss",
+          "apps/my-spartacus-app/src/styles/spartacus/asm.scss",
+          "apps/my-spartacus-app/src/styles/spartacus/product.scss"
+        ],
+        "stylePreprocessorOptions": {
+          "includePaths": ["node_modules/"],
+          "sass": {
+            "silenceDeprecations": ["import"]
+          }
+        }
       },
       "configurations": {
         "production": {
           "budgets": [
             {
               "type": "initial",
-              "maximumWarning": "500kb",
-              "maximumError": "1mb"
+              "maximumWarning": "500kB",
+              "maximumError": "3.5mb"
             },
             {
               "type": "anyComponentStyle",
-              "maximumWarning": "4kb",
-              "maximumError": "8kb"
+              "maximumWarning": "4kB",
+              "maximumError": "8kB"
             }
           ],
           "outputHashing": "all"
@@ -59,23 +80,33 @@
       },
       "defaultConfiguration": "development"
     },
-    "lint": {
-      "executor": "@nx/eslint:lint"
-    },
     "test": {
       "executor": "@angular/build:unit-test",
       "options": {
-        "watch": false
+        "tsConfig": "apps/my-spartacus-app/tsconfig.spec.json",
+        "stylePreprocessorOptions": {
+          "includePaths": ["node_modules/"]
+        },
+        "styles": [
+          "apps/my-spartacus-app/src/styles/spartacus/user.scss",
+          "apps/my-spartacus-app/src/styles/spartacus/cart.scss",
+          "apps/my-spartacus-app/src/styles/spartacus/order.scss",
+          "apps/my-spartacus-app/src/styles/spartacus/checkout.scss",
+          "apps/my-spartacus-app/src/styles/spartacus/storefinder.scss",
+          "apps/my-spartacus-app/src/styles/spartacus/asm.scss",
+          "apps/my-spartacus-app/src/styles/spartacus/product.scss"
+        ],
+        "assets": [
+          {
+            "glob": "**/*",
+            "input": "./node_modules/@spartacus/smartedit/assets",
+            "output": "assets/"
+          }
+        ]
       }
     },
-    "serve-static": {
-      "continuous": true,
-      "executor": "@nx/web:file-server",
-      "options": {
-        "buildTarget": "my-spartacus-app:build",
-        "staticFilePath": "dist/apps/my-spartacus-app/browser",
-        "spa": true
-      }
+    "lint": {
+      "executor": "@nx/eslint:lint"
     }
   }
 }
