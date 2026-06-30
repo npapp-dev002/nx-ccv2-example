@@ -7,7 +7,7 @@
     "lint": "nx run-many --target=lint",
     "test": "nx run-many --target=test",
     "build:bff": "vivaldi build bff",
-    "build:my-spartacus-app": "nx build my-spartacus-app && cp dist/apps/my-spartacus-app/server/server.mjs dist/apps/my-spartacus-app/spa.mjs",
+    "build:my-spartacus-app": "nx build my-spartacus-app && cp dist/apps/storefrontapp/server/server.mjs dist/apps/storefrontapp/spa.mjs",
     "dev:bff": "vivaldi dev bff",
     "dev:my-spartacus-app": "nx serve my-spartacus-app"
   },
