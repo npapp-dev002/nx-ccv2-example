@@ -12,6 +12,10 @@
       "options": {
         "outputPath": "dist/apps/my-spartacus-app",
         "browser": "apps/my-spartacus-app/src/main.ts",
+        "server": "apps/my-spartacus-app/src/main.server.ts",
+        "ssr": {
+          "entry": "apps/my-spartacus-app/src/main.server.ts"
+        },
         "polyfills": ["zone.js"],
         "tsConfig": "apps/my-spartacus-app/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
